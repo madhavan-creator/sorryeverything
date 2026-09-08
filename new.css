@@ -1,0 +1,592 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    font-family:
+        "Poppins",
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #6d1bb3,
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #12001f,
+            #260044,
+            #4b0082
+        );
+
+    color: white;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.page {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100dvh;
+
+    display: grid;
+
+    grid-template-columns: 55% 45%;
+
+    align-items: center;
+
+    padding: 40px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(1.03);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform: scale(1);
+}
+
+
+/* =========================
+   PHOTO
+========================= */
+
+.photo-section {
+    height: min(82vh, 760px);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.photo-section img {
+
+    width: min(80%, 480px);
+
+    aspect-ratio: 4 / 5;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    border-radius: 35px;
+
+    border: 2px solid rgba(255,255,255,0.25);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.45),
+        0 0 40px rgba(180,80,255,0.25);
+
+    transition: 0.5s ease;
+}
+
+.photo-section img:hover {
+    transform: scale(1.02);
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+
+    max-width: 600px;
+
+    padding: 40px;
+}
+
+.small-text {
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+
+    color: #e7caff;
+
+    margin-bottom: 20px;
+}
+
+h1 {
+
+    font-size: clamp(
+        50px,
+        6vw,
+        90px
+    );
+
+    line-height: 0.95;
+
+    margin-bottom: 30px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #e9c7ff
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+p {
+
+    font-size: 19px;
+
+    line-height: 1.8;
+
+    color: #eee0f8;
+
+    margin-bottom: 35px;
+}
+
+
+/* =========================
+   NORMAL BUTTON
+========================= */
+
+.content > button {
+
+    border: none;
+
+    padding: 16px 32px;
+
+    border-radius: 50px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8e2de2,
+            #4a00e0
+        );
+
+    box-shadow:
+        0 10px 30px rgba(140,40,220,0.4);
+
+    transition: 0.3s ease;
+}
+
+.content > button:hover {
+
+    transform: translateY(-4px) scale(1.04);
+
+    box-shadow:
+        0 15px 40px rgba(180,80,255,0.55);
+}
+
+
+/* =========================
+   ANSWER BUTTONS
+========================= */
+
+.answer-area {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    min-height: 100px;
+}
+
+.yes-button {
+
+    border: none;
+
+    padding: 18px 30px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4fa3,
+            #8e2de2
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 35px rgba(255,50,160,0.4);
+
+    transition: 0.3s;
+}
+
+.yes-button:hover {
+
+    transform: scale(1.08);
+}
+
+
+/* =========================
+   NO BUTTON
+========================= */
+
+.no-button {
+
+    position: fixed;
+
+    z-index: 100;
+
+    border: none;
+
+    padding: 14px 25px;
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,0.12);
+
+    color: white;
+
+    border: 1px solid rgba(255,255,255,0.25);
+
+    cursor: pointer;
+
+    transition:
+        left 0.15s ease,
+        top 0.15s ease,
+        transform 0.15s ease;
+
+    backdrop-filter: blur(10px);
+}
+
+
+/* =========================
+   HEART BACKGROUND
+========================= */
+
+.background-hearts span {
+
+    position: fixed;
+
+    bottom: -50px;
+
+    font-size: 25px;
+
+    opacity: 0.25;
+
+    animation: floatHeart 8s linear infinite;
+
+    pointer-events: none;
+}
+
+.background-hearts span:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.background-hearts span:nth-child(2) {
+    left: 30%;
+    animation-delay: 2s;
+}
+
+.background-hearts span:nth-child(3) {
+    left: 50%;
+    animation-delay: 4s;
+}
+
+.background-hearts span:nth-child(4) {
+    left: 70%;
+    animation-delay: 1s;
+}
+
+.background-hearts span:nth-child(5) {
+    left: 85%;
+    animation-delay: 3s;
+}
+
+.background-hearts span:nth-child(6) {
+    left: 60%;
+    animation-delay: 5s;
+}
+
+
+@keyframes floatHeart {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.3;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   POPUP
+========================= */
+
+.popup {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        rgba(10,0,20,0.75);
+
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    z-index: 1000;
+
+    transition: 0.4s ease;
+}
+
+.popup.show {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+.popup-box {
+
+    width: min(
+        90%,
+        500px
+    );
+
+    padding: 50px 35px;
+
+    text-align: center;
+
+    border-radius: 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(100,20,150,0.8),
+            rgba(35,0,60,0.9)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.2);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.6);
+
+    transform: scale(0.7);
+
+    transition: 0.5s ease;
+}
+
+.popup.show .popup-box {
+
+    transform: scale(1);
+}
+
+.big-heart {
+
+    font-size: 80px;
+
+    animation:
+        heartBeat 1s infinite;
+}
+
+.popup-box h2 {
+
+    font-size: 40px;
+
+    margin: 15px 0;
+}
+
+.popup-box p {
+
+    font-size: 17px;
+
+    margin: 0;
+}
+
+.heart-line {
+
+    margin-top: 25px;
+
+    font-size: 22px;
+}
+
+
+@keyframes heartBeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .page {
+
+        grid-template-columns: 1fr;
+
+        grid-template-rows:
+            50% 50%;
+
+        padding: 15px;
+
+        text-align: center;
+    }
+
+    .photo-section {
+
+        height: 100%;
+
+        padding: 10px;
+    }
+
+    .photo-section img {
+
+        width: min(
+            65vw,
+            300px
+        );
+
+        height: auto;
+
+        aspect-ratio: 4 / 5;
+
+        border-radius: 25px;
+    }
+
+    .content {
+
+        padding:
+            10px 20px 30px;
+
+        max-width: 100%;
+    }
+
+    .small-text {
+
+        font-size: 11px;
+
+        letter-spacing: 1.5px;
+
+        margin-bottom: 12px;
+    }
+
+    h1 {
+
+        font-size:
+            clamp(
+                42px,
+                13vw,
+                65px
+            );
+
+        margin-bottom: 15px;
+    }
+
+    p {
+
+        font-size: 15px;
+
+        line-height: 1.55;
+
+        margin-bottom: 20px;
+    }
+
+    .content > button {
+
+        padding:
+            13px 25px;
+
+        font-size: 14px;
+    }
+
+    .answer-area {
+
+        justify-content: center;
+
+        gap: 12px;
+    }
+
+    .yes-button {
+
+        padding:
+            14px 20px;
+
+        font-size: 13px;
+    }
+
+    .no-button {
+
+        padding:
+            12px 20px;
+
+        font-size: 13px;
+    }
+}
